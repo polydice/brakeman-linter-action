@@ -3,7 +3,7 @@ name: Static checks
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   rubocop:
