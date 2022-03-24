@@ -23,7 +23,7 @@ jobs:
         run: rubocop
 
   brakeman:
-    name: Rubocop Action
+    name: Brakeman Action
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
