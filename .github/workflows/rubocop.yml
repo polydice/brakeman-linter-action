@@ -1,26 +1,38 @@
-name: Rubocop
+name: Static checks
 
 on:
-  pull_request:
-    branches:
-      - "*"
   push:
     branches:
       - master
 
 jobs:
   rubocop:
-    name: Ruocop Action
+    name: Rubocop Action
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Set up Ruby 2.6
+      - name: Set up Ruby 2.7.5
         uses: actions/setup-ruby@v1
         with:
-          ruby-version: 2.6.x
+          ruby-version: 2.7.5
       - name: Bundle
         run: |
           gem install bundler
           bundle install --jobs 4 --retry 3
       - name: Run Rubocop
         run: rubocop
+
+  brakeman:
+    name: Rubocop Action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Set up Ruby 2.7.5
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7.5
+      - name: Install
+        run: |
+          gem install brakeman
+      - name: Run Brakeman
+        run: brakeman -A --force
