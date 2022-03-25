@@ -1,13 +1,19 @@
-## Brakeman github action
+## Brakeman results parser github action
 
 Brakeman is a static analysis tool which checks Ruby on Rails applications for security vulnerabilities.
-[See more](https://github.com/presidentbeef/brakeman)
+
+You can read more about Brakeman itself [here](https://github.com/presidentbeef/brakeman).
+
+This action helps make sure that brakeman results get accurately added to pull requests, in the event of a new issue.
+
+Currently we hardcode the brakeman version (5.2.1) to prevent the unintended consequences of pulling down the latest version
+regardless of context.
 
 ### Usage
 
 ```yml
 - name: Brakeman
-  uses: cookpad/brakeman-linter-action@v1.0.1
+  uses: cookpad/brakeman-linter-action@v1.0.2
   env:
     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 ```
@@ -22,7 +28,7 @@ Brakeman is a static analysis tool which checks Ruby on Rails applications for s
   run: |
     brakeman -f json > tmp/brakeman.json || exit 0
 - name: Brakeman
-  uses: cookpad/brakeman-linter-action@v1.0.1
+  uses: cookpad/brakeman-linter-action@v1.0.2
   env:
     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
     REPORT_PATH: tmp/brakeman.json
@@ -32,7 +38,7 @@ Brakeman is a static analysis tool which checks Ruby on Rails applications for s
 
 ```yml
 - name: Brakeman
-  uses: cookpad/brakeman-linter-action@v1.0.1
+  uses: cookpad/brakeman-linter-action@v1.0.2
   env:
     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
     PROJECT_PATH: my_rails_app
@@ -51,7 +57,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Brakeman
-      uses: cookpad/brakeman-linter-action@v1.0.1
+      uses: cookpad/brakeman-linter-action@v1.0.2
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 ```
