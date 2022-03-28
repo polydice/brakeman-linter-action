@@ -16,19 +16,17 @@ class GithubCheckRunService
       endpoint_url,
       create_check_payload
     )['id']
-    puts id
     @summary = @report_adapter.summary(@report)
     @annotations = @report_adapter.annotations(@report)
     @conclusion = @report_adapter.conslusion(@report)
 
-    puts @summary
-
     result = {}
-    @annotations.each_slice(MAX_ANNOTATIONS_SIZE) do |annotations|
-      result.merge(client_patch(id, annotations))
+    @annotations.each_slice(MAX_ANNOTATIONS_SIZE) do |annotation|
+      post_result = client_patch(id, annotation)
+      result.merge(post_result)
+      puts post_result
     end
     result
-    puts result
   end
 
   private

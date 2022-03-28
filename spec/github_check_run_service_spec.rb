@@ -25,7 +25,7 @@ describe GithubCheckRunService do
 
       stub_const('GithubCheckRunService::MAX_ANNOTATIONS_SIZE', 2)
       allow(service).to receive(:client_patch).and_return({})
-      expect(service).to receive(:client_patch).twice
+      expect(service).to receive(:client_patch).exactly(13).times
       service.run
     end
   end

@@ -1,5 +1,19 @@
 **Brakeman Report**:
-4 security warnings
-- [Evaluation](https://brakemanscanner.org/docs/warning_types/dangerous_eval/)
-- [MassAssignment](https://brakemanscanner.org/docs/warning_types/mass_assignment/)
+25 security warnings
+- [Deserialize](https://brakemanscanner.org/docs/warning_types/unsafe_deserialization)
 - [SQL](https://brakemanscanner.org/docs/warning_types/sql_injection/)
+- [WeakHash](https://brakemanscanner.org/docs/warning_types/weak_hash/)
+- [UnscopedFind](https://brakemanscanner.org/docs/warning_types/unscoped_find/)
+- [Send](https://brakemanscanner.org/docs/warning_types/dangerous_send/)
+- [SessionSettings](https://brakemanscanner.org/docs/warning_types/session_setting/)
+- [ForceSSL](https://brakemanscanner.org/docs/warning_types/missing_encryption/)
+- [UnsafeReflection](https://brakemanscanner.org/docs/warning_types/remote_code_execution/)
+- [PermitAttributes](https://brakemanscanner.org/docs/warning_types/mass_assignment/)
+- [JSONEntityEscape](https://brakemanscanner.org/docs/warning_types/cross-site_scripting/)
+- [EOLRuby](https://brakemanscanner.org/docs/warning_types/unmaintained_dependency/)
+- [MassAssignment](https://brakemanscanner.org/docs/warning_types/mass_assignment/)
+- [ValidationRegex](https://brakemanscanner.org/docs/warning_types/format_validation/)
+- [Execute](https://brakemanscanner.org/docs/warning_types/command_injection/)
+- [CSRFTokenForgeryCVE](https://groups.google.com/g/rubyonrails-security/c/NOjKiGeXUgw)
+- [SendFile](https://brakemanscanner.org/docs/warning_types/file_access/)
+- [CrossSiteScripting](https://brakemanscanner.org/docs/warning_types/cross-site_scripting/)

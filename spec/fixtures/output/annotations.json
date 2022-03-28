@@ -1,34 +1,201 @@
 [
   {
-    "path": "app/controllers/posts_controller.rb",
-    "start_line": 29,
-    "end_line": 29,
-    "annotation_level": "warning",
-    "title": "High - Evaluation",
-    "message": "User input in eval"
+    "path":"app/controllers/password_resets_controller.rb",
+    "start_line":6,
+    "end_line":6,
+    "annotation_level":"warning",
+    "title":"Medium - Deserialize",
+    "message":"`Marshal.load` called with parameter value"
   },
   {
-    "path": "app/controllers/posts_controller.rb",
-    "start_line": 18,
-    "end_line": 18,
-    "annotation_level": "warning",
-    "title": "High - MassAssignment",
-    "message": "Parameters should be whitelisted for mass assignment"
+    "path":"app/models/analytics.rb",
+    "start_line":3,
+    "end_line":3,
+    "annotation_level":"warning",
+    "title":"Medium - SQL",
+    "message":"Possible SQL injection"
   },
   {
-    "path": "app/controllers/posts_controller.rb",
-    "start_line": 19,
-    "end_line": 19,
-    "annotation_level": "warning",
-    "title": "High - MassAssignment",
-    "message": "Parameters should be whitelisted for mass assignment"
+    "path":"app/models/user.rb",
+    "start_line":55,
+    "end_line":55,
+    "annotation_level":"warning",
+    "title":"High - WeakHash",
+    "message":"Weak hashing algorithm used: MD5"
   },
   {
-    "path": "app/controllers/posts_controller.rb",
-    "start_line": 13,
-    "end_line": 13,
-    "annotation_level": "warning",
-    "title": "Medium - SQL",
-    "message": "Possible SQL injection"
-  }
+    "path":"app/controllers/pay_controller.rb",
+    "start_line":29,
+    "end_line":29,
+    "annotation_level":"warning",
+    "title":"Weak - UnscopedFind",
+    "message":"Unscoped call to `Pay#find_by_id`"
+  },
+  {
+    "path":"app/models/user.rb",
+    "start_line":45,
+    "end_line":45,
+    "annotation_level":"warning",
+    "title":"High - WeakHash",
+    "message":"Weak hashing algorithm used: MD5"
+  },
+  {
+    "path":"app/controllers/dashboard_controller.rb",
+    "start_line":16,
+    "end_line":16,
+    "annotation_level":"warning",
+    "title":"High - Send",
+    "message":"User controlled method execution"
+  },
+  {
+    "path":"config/initializers/session_store.rb",
+    "start_line":4,
+    "end_line":4,
+    "annotation_level":"warning",
+    "title":"High - SessionSettings",
+    "message":"Session cookies should be set to HTTP only"
+  },
+  {
+    "path":"config/environments/production.rb",
+    "start_line":1,
+    "end_line":1,
+    "annotation_level":"warning",
+    "title":"High - ForceSSL",
+    "message":"The application does not force use of HTTPS: `config.force_ssl` is not enabled"
+  },
+  {
+    "path":"config/initializers/secret_token.rb",
+    "start_line":8,
+    "end_line":8,
+    "annotation_level":"warning",
+    "title":"High - SessionSettings",
+    "message":"Session secret should not be included in version control"
+  },
+  {
+    "path":"app/controllers/api/v1/mobile_controller.rb",
+    "start_line":17,
+    "end_line":17,
+    "annotation_level":"warning",
+    "title":"High - UnsafeReflection",
+    "message":"Unsafe reflection method `constantize` called with parameter value"
+  },
+  {
+    "path":"app/controllers/users_controller.rb",
+    "start_line":55,
+    "end_line":55,
+    "annotation_level":"warning",
+    "title":"High - PermitAttributes",
+    "message":"Potentially dangerous key allowed for mass assignment"
+  },
+  {
+    "path":"app/controllers/users_controller.rb",
+    "start_line":29,
+    "end_line":29,
+    "annotation_level":"warning",
+    "title":"High - SQL",
+    "message":"Possible SQL injection"
+  },
+  {
+    "path":"config/environments/production.rb",
+    "start_line":2,
+    "end_line":2,
+    "annotation_level":"warning",
+    "title":"Medium - JSONEntityEscape",
+    "message":"HTML entities in JSON are not escaped by default"
+  },
+  {
+    "path":"Gemfile.lock",
+    "start_line":225,
+    "end_line":225,
+    "annotation_level":"warning",
+    "title":"Medium - EOLRuby",
+    "message":"Support for Ruby 2.6.5 ends on 2022-03-31"
+  },
+  {
+    "path":"app/controllers/users_controller.rb",
+    "start_line":50,
+    "end_line":50,
+    "annotation_level":"warning",
+    "title":"Medium - MassAssignment",
+    "message":"Specify exact keys allowed for mass assignment instead of using `permit!` which allows any keys"
+  },
+  {
+      "path":"app/models/user.rb",
+      "start_line":13,
+      "end_line":13,
+      "annotation_level":"warning",
+      "title":"High - ValidationRegex",
+      "message":"Insufficient validation for `email` using `/.+@.+\\..+/i`. Use `\\A` and `\\z` as anchors"
+    },
+    {
+      "path":"app/models/benefits.rb",
+      "start_line":15,
+      "end_line":15,
+      "annotation_level":"warning",
+      "title":"Medium - Execute",
+      "message":"Possible command injection"
+    },
+    {
+      "path":"app/controllers/api/v1/mobile_controller.rb",
+      "start_line":10,
+      "end_line":10,
+      "annotation_level":"warning",
+      "title":"High - UnsafeReflection",
+      "message":"Unsafe reflection method `constantize` called with parameter value"
+    },
+    {
+      "path":"app/controllers/api/v1/users_controller.rb",
+      "start_line":40,
+      "end_line":40,
+      "annotation_level":"warning",
+      "title":"Medium - WeakHash",
+      "message":"Weak hashing algorithm used: SHA1"
+    },
+    {
+      "path":"Gemfile.lock",
+      "start_line":225,
+      "end_line":225,
+      "annotation_level":"warning",
+      "title":"Medium - CSRFTokenForgeryCVE",
+      "message":"Rails 6.0.0 has a vulnerability that may allow CSRF token forgery. Upgrade to Rails 6.0.3.1 or patch"},
+      {
+        "path":"app/controllers/password_resets_controller.rb",
+        "start_line":57,
+        "end_line":57,
+        "annotation_level":"warning",
+        "title":"Medium - WeakHash",
+        "message":"Weak hashing algorithm used: MD5"
+      },
+      {
+        "path":"app/controllers/benefit_forms_controller.rb",
+        "start_line":12,
+        "end_line":12,
+        "annotation_level":"warning",
+        "title":"High - SendFile",
+        "message":"Parameter value used in file name"
+      },
+      {
+        "path":"app/controllers/password_resets_controller.rb",
+        "start_line":48,
+        "end_line":48,
+        "annotation_level":"warning",
+        "title":"Medium - WeakHash",
+        "message":"Weak hashing algorithm used: MD5"
+      },
+      {
+        "path":"app/views/layouts/application.html.erb",
+        "start_line":12,
+        "end_line":12,
+        "annotation_level":"warning",
+        "title":"High - CrossSiteScripting",
+        "message":"Unescaped cookie value"
+      },
+      {
+        "path":"app/controllers/benefit_forms_controller.rb",
+        "start_line":11,
+        "end_line":11,
+        "annotation_level":"warning",
+        "title":"High - UnsafeReflection",
+        "message":"Unsafe reflection method `constantize` called with parameter value"
+      }
 ]

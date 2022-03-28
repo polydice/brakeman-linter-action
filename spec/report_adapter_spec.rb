@@ -17,7 +17,7 @@ describe ReportAdapter do
 
   let(:adapter) { ReportAdapter }
 
-  it '.conslusion' do
+  it '.conclusion' do
     result = adapter.conslusion(brakeman_report)
     expect(result).to eq('failure')
   end
