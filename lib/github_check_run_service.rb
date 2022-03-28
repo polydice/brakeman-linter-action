@@ -22,9 +22,7 @@ class GithubCheckRunService
 
     result = {}
     @annotations.each_slice(MAX_ANNOTATIONS_SIZE) do |annotation|
-      post_result = client_patch(id, annotation)
-      result.merge(post_result)
-      puts post_result
+      result.merge(client_patch(id, annotation))
     end
     result
   end

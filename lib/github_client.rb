@@ -24,7 +24,8 @@ class GithubClient
     @headers ||= {
       "Content-Type": 'application/json',
       "Authorization": "token #{@github_token}",
-      "User-Agent": @user_agent
+      "User-Agent": @user_agent,
+      "Accept": 'application/vnd.github.v3+json'
     }
   end
 
