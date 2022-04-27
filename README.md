@@ -13,7 +13,7 @@ regardless of context.
 
 ```yml
 - name: Brakeman
-  uses: cookpad/brakeman-linter-action@v1.0.4
+  uses: cookpad/brakeman-linter-action@v2.0.0
   env:
     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 ```
@@ -28,7 +28,7 @@ regardless of context.
   run: |
     brakeman -f json > tmp/brakeman.json || exit 0
 - name: Brakeman
-  uses: cookpad/brakeman-linter-action@v1.0.4
+  uses: cookpad/brakeman-linter-action@v2.0.0
   env:
     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
     REPORT_PATH: tmp/brakeman.json
@@ -38,7 +38,7 @@ regardless of context.
 
 ```yml
 - name: Brakeman
-  uses: cookpad/brakeman-linter-action@v1.0.4
+  uses: cookpad/brakeman-linter-action@v2.0.0
   env:
     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
     PROJECT_PATH: my_rails_app
@@ -57,7 +57,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Brakeman
-      uses: cookpad/brakeman-linter-action@v1.0.4
+      uses: cookpad/brakeman-linter-action@v2.0.0
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         GITHUB_LATEST_SHA: ${{ github.event.pull_request.head.sha }}
