@@ -5,7 +5,7 @@ source "https://rubygems.org"
 group :development, :test do
   gem "brakeman"
   gem "rubocop"
-  gem 'rubocop-performance', require: false
+  gem "rubocop-performance", require: false
 end
 
 group :test do
