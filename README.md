@@ -60,7 +60,11 @@ jobs:
       uses: cookpad/brakeman-linter-action@v1.0.4
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        GITHUB_LATEST_SHA: ${{ github.event.pull_request.head.sha }}
+        CUSTOM_MESSAGE_CONTENT: "This is a cool, friendly comment!<br />Thank you for improving our security!"
 ```
+
+Note that if you want a line break in CUSTOM_MESSAGE_CONTENT it is recommended to use `<br />` tags.
 
 ## Screenshots
 

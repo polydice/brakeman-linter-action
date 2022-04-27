@@ -16,9 +16,12 @@ project_path = ENV['PROJECT_PATH'].nil? ? ENV['GITHUB_WORKSPACE'] : "#{ENV['GITH
 @event_json = read_json(ENV['GITHUB_EVENT_PATH']) if ENV['GITHUB_EVENT_PATH']
 @github_data = {
   sha: ENV['GITHUB_SHA'],
+  latest_commit_sha: ENV['GITHUB_LATEST_SHA'],
   token: ENV['GITHUB_TOKEN'],
   owner: ENV['GITHUB_REPOSITORY_OWNER'] || @event_json.dig('repository', 'owner', 'login'),
-  repo: ENV['GITHUB_REPOSITORY_NAME'] || @event_json.dig('repository', 'name')
+  repo: ENV['GITHUB_REPOSITORY_NAME'] || @event_json.dig('repository', 'name'),
+  pull_request_number: ENV['GITHUB_PULL_REQUEST_NUMBER'] || @event_json.dig('pull_request', 'number'),
+  custom_message_content: ENV['CUSTOM_MESSAGE_CONTENT'] || ""
 }
 
 @report =
