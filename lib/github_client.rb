@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class GithubClient
-  def initialize(github_token, user_agent: 'ruby')
+  def initialize(github_token, user_agent: "ruby")
     @github_token = github_token
     @user_agent = user_agent
   end
@@ -20,21 +20,21 @@ class GithubClient
 
   private
 
-  def headers
-    @headers ||= {
-      "Content-Type": 'application/json',
-      "Authorization": "token #{@github_token}",
-      "User-Agent": @user_agent,
-      "Accept": 'application/vnd.github.v3+json'
-    }
-  end
+    def headers
+      @_headers ||= {
+        "Content-Type": "application/json",
+        Authorization: "token #{@github_token}",
+        "User-Agent": @user_agent,
+        Accept: "application/vnd.github.v3+json"
+      }
+    end
 
-  def request_http
-    http = Net::HTTP.new('api.github.com', 443)
-    http.use_ssl = true
-    response = yield(http)
-    raise "#{response.message}: #{response.body}" if response.code.to_i >= 300
+    def request_http
+      http = Net::HTTP.new("api.github.com", 443)
+      http.use_ssl = true
+      response = yield(http)
+      raise "#{response.message}: #{response.body}" if response.code.to_i >= 300
 
-    JSON.parse(response.body)
-  end
+      JSON.parse(response.body)
+    end
 end
