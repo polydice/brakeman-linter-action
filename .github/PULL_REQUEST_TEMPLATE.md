@@ -8,9 +8,8 @@ Fixes # (issue)
 
 ## Why should this be added
 
-Explain value.
+Explain the value of the change.
 
 ## Checklist
 
-- [ ] My code follows the style guidelines of this project
 - [ ] Actions are passing
