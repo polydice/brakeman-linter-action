@@ -8,7 +8,7 @@ on:
 jobs:
   rubocop:
     name: Rubocop Action
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@master
       - name: Set up Ruby 2.7.5
