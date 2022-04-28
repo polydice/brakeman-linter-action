@@ -21,18 +21,4 @@ jobs:
           bundle install --jobs 4 --retry 3
       - name: Run Rubocop
         run: rubocop
-
-  brakeman:
-    name: Brakeman Action
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - name: Set up Ruby 2.7.5
-        uses: actions/setup-ruby@v1
-        with:
-          ruby-version: 2.7.5
-      - name: Install
-        run: |
-          gem install brakeman
-      - name: Run Brakeman
-        run: brakeman -A --force
+        
