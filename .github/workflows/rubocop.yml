@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.6 # Not needed with a .ruby-version file
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
 jobs:
   rubocop:
@@ -12,13 +16,14 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Set up Ruby 2.7.5
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7.5
-      - name: Bundle
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+     - name: Bundle
         run: |
           gem install bundler
           bundle install --jobs 4 --retry 3
       - name: Run Rubocop
         run: rubocop
-        
+
