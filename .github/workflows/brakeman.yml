@@ -1,0 +1,26 @@
+name: Security checks (dogfooding)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:  
+  brakeman:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Brakeman report
+        run: |
+          bundle exec brakeman -A -q --force
+      - name: Send Brakeman report to Github if it has warnings
+        if: failure()
+        uses: cookpad/brakeman-linter-action@v2.0.0
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          REPORT_PATH: tmp/${{ github.event.pull_request.head.sha }}-brakeman.json
+          GITHUB_LATEST_SHA: ${{ github.event.pull_request.head.sha }}
+          CUSTOM_MESSAGE_CONTENT: "Please address this issue before merging.<br />Thank you for improving our security!"
