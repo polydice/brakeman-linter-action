@@ -17,7 +17,7 @@ jobs:
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: Brakeman report
         run: |
-          bundle exec brakeman -A -q --force
+          bundle exec brakeman -A -q --force -f json -o tmp/${{ github.event.pull_request.head.sha }}-brakeman.json
       - name: Send Brakeman report to Github if it has warnings
         if: failure()
         uses: cookpad/brakeman-linter-action@v2.0.0
