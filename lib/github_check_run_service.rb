@@ -22,10 +22,14 @@ class GithubCheckRunService
     @conclusion = @report_adapter.conslusion(@report)
 
     result = {}
-    @annotations.each_slice(MAX_ANNOTATIONS_SIZE) do |annotation|
-      result.merge(client_patch_annotations(id, annotation))
-      # Don't need to merge twice
-      client_post_pull_requests(annotation[0])
+    if @annotations.empty?
+      client_patch_annotations(id, [])
+    else
+      @annotations.each_slice(MAX_ANNOTATIONS_SIZE) do |annotation|
+        result.merge(client_patch_annotations(id, annotation))
+        # Don't need to merge twice
+        client_post_pull_requests(annotation[0])
+      end
     end
     result
   end
