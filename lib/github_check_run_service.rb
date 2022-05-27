@@ -23,7 +23,7 @@ class GithubCheckRunService
 
     result = {}
     if @annotations.empty?
-      result
+      client_patch_annotations(id, [])
     else
       @annotations.each_slice(MAX_ANNOTATIONS_SIZE) do |annotation|
         result.merge(client_patch_annotations(id, annotation))
