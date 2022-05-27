@@ -45,7 +45,10 @@ class GithubCheckRunService
         create_pull_request_comment_payload(annotation)
       )
     rescue GithubClient::IssueExistsOutsideOfPullRequestError
-      puts "⚠️ Brakeman has detected an issue elsewhere, outside of the Pull Request ⚠️"
+      puts "**************************************************************************"
+      puts "* Brakeman has detected an issue elsewhere, outside of this Pull Request *"
+      puts "* Please check the results above to see where & what needs to be fixed.  *"
+      puts "**************************************************************************"
     end
 
     def annotation_endpoint_url

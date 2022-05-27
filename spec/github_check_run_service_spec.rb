@@ -73,7 +73,7 @@ describe GithubCheckRunService do
       stub_request(:any, "https://api.github.com/repos/owner/repository_name/pulls/10/comments").
         to_return(status: 422, body: '{"message":"Validation Failed","errors":[{"resource":"PullRequestReviewComment","code":"invalid","field":"pull_request_review_thread.path"},{"resource":"PullRequestReviewComment","code":"missing_field","field":"pull_request_review_thread.diff_hunk"}],"documentation_url":"https://docs.github.com/rest"}')
 
-      expect { service.run }.to output("⚠️ Brakeman has detected an issue elsewhere, outside of the Pull Request ⚠️\n").to_stdout
+      expect { service.run }.to output(/Brakeman has detected an issue elsewhere, outside of this Pull Request/).to_stdout
     end
   end
 end
