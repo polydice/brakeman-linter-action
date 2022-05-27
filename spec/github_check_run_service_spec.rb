@@ -3,6 +3,7 @@
 require "./spec/spec_helper"
 
 describe GithubCheckRunService do
+  let(:no_findings_brakeman_report) { JSON(File.read("./spec/fixtures/no_findings_report.json")) }
   let(:brakeman_report) { JSON(File.read("./spec/fixtures/report.json")) }
   let(:github_data) { { sha: "sha", token: "token", owner: "owner", repo: "repository_name", pull_request_number: "10" } }
   let(:service) { GithubCheckRunService.new(brakeman_report, github_data, ReportAdapter) }
@@ -19,6 +20,20 @@ describe GithubCheckRunService do
 
     output = service.run
     expect(output).to be_a(Hash)
+  end
+
+  context "no findings report" do
+    it "does not run forever on a report with no findings" do
+      stub_request(:any, "https://api.github.com/repos/owner/repository_name/check-runs/id").
+        to_return(status: 200, body: "{}")
+
+      stub_request(:any, "https://api.github.com/repos/owner/repository_name/check-runs").
+        to_return(status: 200, body: '{"id": "id"}')
+
+      no_findings_service = GithubCheckRunService.new(no_findings_brakeman_report, github_data, ReportAdapter)
+      output = no_findings_service.run
+      expect(output).to eq({})
+    end
   end
 
   context "annotation limit set" do
@@ -48,6 +63,7 @@ describe GithubCheckRunService do
 
       stub_request(:any, "https://api.github.com/repos/owner/repository_name/pulls/10/comments").
         to_return(status: 200, body: '{"id": "id"}')
+
       expected_comment_body = {
         "annotation_level" => "warning",
         "end_line" => 6,
@@ -56,12 +72,13 @@ describe GithubCheckRunService do
         "start_line" => 6,
         "title" => "Medium - Deserialize"
       }
+
       expect(service).to receive(:client_post_pull_requests).with(expected_comment_body)
       service.run
     end
   end
 
-  # Eventually we'll have this comment, but for now, we don't want to fail the build
+  # Eventually we'll have this comment, but for now, we don't want to fail with a mysterious github error
   context "an issue in the codebase but not in the PR" do
     it "does not fail the build" do
       stub_request(:any, "https://api.github.com/repos/owner/repository_name/check-runs").
