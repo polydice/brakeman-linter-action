@@ -40,6 +40,7 @@ class GithubCheckRunService
     end
 
     def client_post_pull_requests(annotation)
+      puts pull_request_endpoint_url.to_s
       @client.post(
         pull_request_endpoint_url.to_s,
         create_pull_request_comment_payload(annotation)

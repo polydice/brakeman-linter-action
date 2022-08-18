@@ -24,6 +24,8 @@ project_path = ENV["PROJECT_PATH"].nil? ? ENV["GITHUB_WORKSPACE"] : "#{ENV['GITH
   custom_message_content: ENV["CUSTOM_MESSAGE_CONTENT"] || ""
 }
 
+puts @github_data
+
 @report =
   if ENV["REPORT_PATH"]
     read_json(ENV["REPORT_PATH"])
